@@ -28,7 +28,6 @@ namespace RepoQuiz.Tests.DAL
             mock_student_table.As<IQueryable<Student>>().Setup(m => m.ElementType).Returns(queryable_list.ElementType);
             mock_student_table.As<IQueryable<Student>>().Setup(m => m.GetEnumerator()).Returns(() => queryable_list.GetEnumerator());
 
-            // Animal property returns Queryable List (Fake database table).
             mock_context.Setup(c => c.Students).Returns(mock_student_table.Object);
 
             mock_student_table.Setup(t => t.Add(It.IsAny<Student>())).Callback((Student s) => student_list.Add(s));
@@ -68,6 +67,56 @@ namespace RepoQuiz.Tests.DAL
 
             Assert.IsInstanceOfType(actual_context, typeof(StudentContext));
 
+        }
+
+        [TestMethod]
+        public void EnsureEmptyRepo()
+        {
+
+            List<Student> actual_students = repo.GetStudents();
+
+            int expected_students_count = 0;
+            int actual_students_count = actual_students.Count();
+
+            Assert.AreEqual(expected_students_count, actual_students_count);
+
+        }
+
+        [TestMethod]
+        public void EnsureCanAddStudentToDatabase()
+        {
+            Student first_student = new Student { FirstName = "Joe", LastName = "Monkeybutt", Major = "Communications" };
+
+            repo.AddStudent(first_student);
+
+            int actual_student_count = repo.GetStudents().Count;
+
+            int expected_student_count = 1;
+
+            // Assert
+            Assert.AreEqual(expected_student_count, actual_student_count);
+        }
+
+        [TestMethod]
+        public void EnsureCanFindStudentById()
+        {
+            Student first_student = new Student { StudentId = 1, FirstName = "Joe", LastName = "Monkeybutt", Major = "Communications" };
+            Student second_student = new Student { StudentId = 2, FirstName = "Steve", LastName = "Goldenrod", Major = "Evolution of Software Instruction" };
+            Student third_student = new Student { StudentId = 3, FirstName = "Jurnell", LastName = "NotionOf", Major = "MVC Whiteboard Examples" };
+
+            repo.AddStudent(first_student);
+            repo.AddStudent(second_student);
+            repo.AddStudent(third_student);
+
+            int student_id = 2;
+            Student chosen_student = repo.GetStudentById(student_id);
+
+
+            string expected_student_lastname = "Goldenrod";
+
+            string actual_student_lastname = chosen_student.LastName;
+
+            Assert.AreEqual(expected_student_lastname, actual_student_lastname);
         }
     }
 }
