@@ -1,5 +1,11 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Student Details";
 }
 
+<h2>@ViewBag.Student.FirstName @ViewBag.Student.LastName</h2>
+<ul>
+    <li>Student Id: @ViewBag.Student.StudentId</li>
+    <li>Major:      @ViewBag.Student.Major</li>
+</ul>
 
