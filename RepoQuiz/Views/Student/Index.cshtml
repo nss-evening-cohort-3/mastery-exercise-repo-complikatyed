@@ -9,7 +9,7 @@
     @{
         for (int i = 0; i < ViewBag.Students.Count; i++)
         {
-            <li><a href="/Student/Details/@ViewBag.Students[i].StudentId">@ViewBag.Students[i].FirstName @ViewBag.Students[i].LastName</a></li>
+            <li>@ViewBag.Students[i].FirstName @ViewBag.Students[i].LastName, Major: @ViewBag.Students[i].Major</li>
         }
     }
 </ul>
