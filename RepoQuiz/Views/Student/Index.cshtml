@@ -5,11 +5,16 @@
 
 
 <h2>@ViewBag.Title</h2>
-<ul>
-    @{
+<table>
+     <thead>First Name</thead><thead>Last Name</thead><thead>Major</thead>
+     @{
         for (int i = 0; i < ViewBag.Students.Count; i++)
         {
-            <li>@ViewBag.Students[i].FirstName @ViewBag.Students[i].LastName, Major: @ViewBag.Students[i].Major</li>
-        }
+            <tr>
+            <td>@ViewBag.Students[i].FirstName</td>
+            <td>@ViewBag.Students[i].LastName</td>
+            <td>@ViewBag.Students[i].Major</td>
+            </tr>
+         }
     }
-</ul>
+</table>
