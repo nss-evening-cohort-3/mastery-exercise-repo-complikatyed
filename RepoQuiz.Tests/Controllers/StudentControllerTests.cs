@@ -20,7 +20,6 @@ namespace RepoQuiz.Tests.Controllers
         {
             mockStudentRepo = new Mock<StudentRepository>();
             students = new List<Student>();
-            mockStudentRepo.Setup(x => x.GetStudents()).Returns(students);
         }
 
         [TestCleanup]
@@ -28,6 +27,13 @@ namespace RepoQuiz.Tests.Controllers
         {
             mockStudentRepo = null;
             students = null;
+        }
+
+        [TestMethod]
+        public void CanMakeInstanceOfStudentController()
+        {
+            StudentController controller = new StudentController();
+            Assert.IsNotNull(controller);
         }
 
     }
