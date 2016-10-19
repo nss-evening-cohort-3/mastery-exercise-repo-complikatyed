@@ -20,13 +20,30 @@ namespace RepoQuiz.DAL
             var chosenString = list[randomIndex];
 
             return chosenString;
-        }                                                                                               
+        }
+        public string ChooseFirstName(List<string> firstnames)
+        {
+            string firstname = ChooseRandomString(firstnames);
+            return firstname;
+        }
+
+        public string ChooseLastName(List<string> lastnames)
+        {
+            string lastname = ChooseRandomString(lastnames);
+            return lastname;
+        }
+
+        public string ChooseMajor(List<string> majors)
+        {
+            string major = ChooseRandomString(majors);
+            return major;
+        }
 
         public Student MakeRandomStudent()
         {
-            var randomFirst = ChooseRandomString(firstnames);
-            var randomLast = ChooseRandomString(lastnames);
-            var randomMajor = ChooseRandomString(majors);
+            string randomFirst = ChooseFirstName(firstnames);
+            string randomLast = ChooseLastName(lastnames);
+            string randomMajor = ChooseMajor(majors);
 
             Student randomizedStudent = new Student { FirstName = randomFirst, LastName = randomLast, Major = randomMajor };
 

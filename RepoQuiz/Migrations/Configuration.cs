@@ -28,12 +28,34 @@ namespace RepoQuiz.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
+
+            NameGenerator randomizer = new NameGenerator();
+
+            var student1 = randomizer.MakeRandomStudent();
+            var student2 = randomizer.MakeRandomStudent();
+            var student3 = randomizer.MakeRandomStudent();
+            var student4 = randomizer.MakeRandomStudent();
+            var student5 = randomizer.MakeRandomStudent();
+            var student6 = randomizer.MakeRandomStudent();
+            var student7 = randomizer.MakeRandomStudent();
+            var student8 = randomizer.MakeRandomStudent();
+            var student9 = randomizer.MakeRandomStudent();
+            var student10 = randomizer.MakeRandomStudent();
+
             context.Students.AddOrUpdate(
-                
-                new Student { FirstName = "Amber", LastName = "Jackson", Major = "Anthropology" },
-                new Student { FirstName = "Julio", LastName = "Shey", Major = "Nursing" },
-                new Student { FirstName = "Andrew", LastName = "Benitez", Major = "Political Science" }
+
+                student1,
+                student2,
+                student3,
+                student4,
+                student5,
+                student6,
+                student7,
+                student8,
+                student9,
+                student10
             );
+
         }
     }
 }
