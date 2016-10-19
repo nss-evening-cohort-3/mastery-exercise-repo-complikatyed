@@ -5,6 +5,7 @@ namespace RepoQuiz.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
     using RepoQuiz.DAL;
+    using Models;
 
     internal sealed class Configuration : DbMigrationsConfiguration<RepoQuiz.DAL.StudentContext>
     {
@@ -27,8 +28,12 @@ namespace RepoQuiz.Migrations
             //      new Person { FullName = "Rowan Miller" }
             //    );
             //
-
-            
+            context.Students.AddOrUpdate(
+                
+                new Student { FirstName = "Amber", LastName = "Jackson", Major = "Anthropology" },
+                new Student { FirstName = "Julio", LastName = "Shey", Major = "Nursing" },
+                new Student { FirstName = "Andrew", LastName = "Benitez", Major = "Political Science" }
+            );
         }
     }
 }
